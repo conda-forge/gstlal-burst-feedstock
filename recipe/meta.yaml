@@ -1,5 +1,5 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
-  sha256: 87c8c2a3691558afc7adaa4f4669c0a90a9fdf485bb2ca9df2e9ced7f8be95ed
+  sha256: e0a623ab0ced29b5f1f2d18678f67f0f0eec937b86172675cc2bca773c746917
   patches:
     # https://git.ligo.org/lscsoft/gstlal/issues/46
     - missing-links.patch
