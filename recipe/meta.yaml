@@ -15,7 +15,7 @@ source:
     - gstaudio.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or py>=30]
   ignore_run_exports:
     # header is included, but never used, reported upstream
