@@ -1,0 +1,10 @@
+--- bin/gstlal_cs_triggergen.old	2020-02-13 14:02:03.000000000 +0000
++++ bin/gstlal_cs_triggergen	2020-02-13 14:02:09.000000000 +0000
+@@ -31,7 +31,6 @@
+ import lal
+ from lal import series
+ from lal import LIGOTimeGPS
+-from lalburst import CoincBurstTable
+ from lalburst import stringutils
+ import lalsimulation
+

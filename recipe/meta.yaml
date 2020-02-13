@@ -1,5 +1,5 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,19 +7,24 @@ package:
 
 source:
   url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
-  sha256: 87c8c2a3691558afc7adaa4f4669c0a90a9fdf485bb2ca9df2e9ced7f8be95ed
+  sha256: e0a623ab0ced29b5f1f2d18678f67f0f0eec937b86172675cc2bca773c746917
   patches:
     # https://git.ligo.org/lscsoft/gstlal/issues/46
     - missing-links.patch
     # https://git.ligo.org/lscsoft/gstlal/issues/47
     - gstaudio.patch
+    # https://git.ligo.org/lscsoft/gstlal/issues/48
+    - unused-import-triggergen.patch
 
 build:
-  number: 1
-  skip: true  # [win or py>=30]
+  error_overdepending: true
+  error_overlinking: true
   ignore_run_exports:
     # header is included, but never used, reported upstream
+    - lalburst
     - lalinspiral
+  number: 0
+  skip: true  # [win or py>=30]
 
 requirements:
   build:
@@ -31,27 +36,27 @@ requirements:
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
-    - gstlal >=1.5.0
+    - gstlal >=1.6.0
     - gstreamer
-    - lal >=6.19.0
-    - lalburst >=1.5.0
+    - lal >=6.20.1
+    - lalburst >=1.5.2
     - lalinspiral
-    - numpy 1.14
+    - numpy
     - python
   run:
     - glib
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
-    - gstlal >=1.5.0
-    - gstlal-ugly >=1.6.0
+    - gst-python
+    - gstlal >=1.6.0
+    - gstlal-ugly >=1.7.0
     - gstreamer
     - h5py
-    - lal >=6.19.2
-    - lalburst >=1.5.0
+    - lal >=6.20.1
     - ligo-scald
     - ligo-segments >=1.2.0
-    - lscsoft-glue >=1.59.3
+    - lscsoft-glue >=2.0.0
     - {{ pin_compatible('numpy') }}
     - python
     - python-confluent-kafka >=0.11.4
