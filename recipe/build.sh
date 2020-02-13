@@ -12,6 +12,7 @@ export LAL_LIBS="-L${PREFIX}/lib -llal -llalburst"
 
 # configure
 ${SRC_DIR}/configure \
+  --enable-introspection=yes \
   --prefix=${PREFIX} \
 ;
 

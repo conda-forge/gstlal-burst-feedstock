@@ -31,27 +31,28 @@ requirements:
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
-    - gstlal >=1.5.0
+    - gstlal >=1.6.0
     - gstreamer
-    - lal >=6.19.0
-    - lalburst >=1.5.0
+    - lal >=6.20.1
+    - lalburst >=1.5.2
     - lalinspiral
-    - numpy 1.14
+    - numpy
     - python
   run:
     - glib
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
-    - gstlal >=1.5.0
-    - gstlal-ugly >=1.6.0
+    - gst-python
+    - gstlal >=1.6.0
+    - gstlal-ugly >=1.7.0
     - gstreamer
     - h5py
-    - lal >=6.19.2
-    - lalburst >=1.5.0
+    - lal >=6.20.1
+    - lalburst >=1.5.2
     - ligo-scald
     - ligo-segments >=1.2.0
-    - lscsoft-glue >=1.59.3
+    - lscsoft-glue >=2.0.0
     - {{ pin_compatible('numpy') }}
     - python
     - python-confluent-kafka >=0.11.4
