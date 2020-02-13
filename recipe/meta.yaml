@@ -13,6 +13,8 @@ source:
     - missing-links.patch
     # https://git.ligo.org/lscsoft/gstlal/issues/47
     - gstaudio.patch
+    # https://git.ligo.org/lscsoft/gstlal/issues/48
+    - unused-import-triggergen.patch
 
 build:
   number: 1
