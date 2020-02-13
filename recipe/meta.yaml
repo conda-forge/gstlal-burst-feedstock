@@ -17,11 +17,13 @@ source:
     - unused-import-triggergen.patch
 
 build:
-  number: 1
-  skip: true  # [win or py>=30]
+  error_overdepending: true
+  error_overlinking: true
   ignore_run_exports:
     # header is included, but never used, reported upstream
     - lalinspiral
+  number: 0
+  skip: true  # [win or py>=30]
 
 requirements:
   build:
