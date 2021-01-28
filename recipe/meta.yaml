@@ -1,13 +1,13 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
-  sha256: e0a623ab0ced29b5f1f2d18678f67f0f0eec937b86172675cc2bca773c746917
+  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
+  sha256: 53409b0fa11e19c22602b0f0fd09909a783a7cbf60c1d98bf4421f460215f9bd
   patches:
     # https://git.ligo.org/lscsoft/gstlal/issues/46
     - missing-links.patch
@@ -94,13 +94,13 @@ test:
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
 
 about:
-  home: "https://lscsoft.docs.ligo.org/gstlal/"
-  dev_url: "https://git.ligo.org/lscsoft/gstlal/"
-  doc_url: "https://lscsoft.docs.ligo.org/gstlal/"
-  license: "GPL-2.0-or-later"
-  license_family: "GPL"
-  license_file: "COPYING"
-  summary: "GStreamer for generic transient data analysis"
+  home: https://lscsoft.docs.ligo.org/gstlal/
+  dev_url: https://git.ligo.org/lscsoft/gstlal/
+  doc_url: https://lscsoft.docs.ligo.org/gstlal/
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: GStreamer for generic transient data analysis
   description: |
     This package contains the plugins and shared libraries required
     to run the gstlal burst (generic transient) pipeline.
