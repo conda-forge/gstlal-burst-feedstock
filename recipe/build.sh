@@ -12,6 +12,10 @@ export gstreamer_LIBS="-L${PREFIX}/lib -lgstbase-1.0 -lgstreamer-1.0"
 export gstreamer_audio_LIBS="-L${PREFIX}/lib -lgstaudio-1.0"
 export LAL_LIBS="-L${PREFIX}/lib -llal -llalmetaio"
 
+# replace '/usr/bin/env python3' with '/usr/bin/python'
+# so that conda-build will then replace it with the $PREFIX/bin/python
+sed -i.tmp 's/\/usr\/bin\/env python3/\/usr\/bin\/python/g' ${SRC_DIR}/bin/gstlal_*
+
 # configure
 ${SRC_DIR}/configure \
   --enable-introspection=yes \
