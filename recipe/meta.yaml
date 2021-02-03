@@ -8,13 +8,6 @@ package:
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
   sha256: 53409b0fa11e19c22602b0f0fd09909a783a7cbf60c1d98bf4421f460215f9bd
-  patches:
-    # https://git.ligo.org/lscsoft/gstlal/issues/46
-    - missing-links.patch
-    # https://git.ligo.org/lscsoft/gstlal/issues/47
-    - gstaudio.patch
-    # https://git.ligo.org/lscsoft/gstlal/issues/48
-    - unused-import-triggergen.patch
 
 build:
   error_overdepending: true
