@@ -1,0 +1,41 @@
+--- configure	2021-01-28 20:59:20.000000000 +0000
++++ configure	2021-02-03 22:35:34.000000000 +0000
+@@ -12703,16 +12703,6 @@
+ 
+ 
+ #
+-# LDFLAGS
+-#
+-
+-
+-# Turn on error messages for undefined symbols
+-AM_LDFLAGS="$AM_LDFLAGS -no-undefined"
+-
+-
+-
+-#
+ # Check for math library
+ #
+ 
+--- python/Makefile.in	2021-01-28 20:59:20.000000000 +0000
++++ python/Makefile.in	2021-02-03 22:34:51.000000000 +0000
+@@ -451,7 +451,7 @@
+ _snglbursttable_la_CPPFLAGS = $(AM_CPPFLAGS) $(PYTHON_CPPFLAGS) -DMODULE_NAME="\"gstlal._snglbursttable\""
+ _snglbursttable_la_CFLAGS = $(AM_CFLAGS) $(LAL_CFLAGS) $(GSL_CFLAGS) $(gstreamer_CFLAGS) -fno-strict-aliasing -DMODULE_NAME="\"gstlal._snglbursttable\""
+ _snglbursttable_la_LIBADD = $(top_builddir)/lib/gstlal-burst/libgstlalburst.la
+-_snglbursttable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) $(PYTHON_LIBS) -module -avoid-version
++_snglbursttable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) -undefined dynamic_lookup -module -avoid-version
+ all: all-recursive
+ 
+ .SUFFIXES:
+--- python/snax/Makefile.in	2021-01-28 20:59:20.000000000 +0000
++++ python/snax/Makefile.in	2021-02-03 22:36:02.000000000 +0000
+@@ -423,7 +423,7 @@
+ _sngltriggertable_la_CPPFLAGS = $(AM_CPPFLAGS) $(PYTHON_CPPFLAGS) -DMODULE_NAME="\"gstlal._sngltriggertable\""
+ _sngltriggertable_la_CFLAGS = $(AM_CFLAGS) $(GSTLAL_CFLAGS) $(LAL_CFLAGS) $(GSL_CFLAGS) $(gstreamer_CFLAGS) -fno-strict-aliasing -DMODULE_NAME="\"gstlal._sngltriggertable\""
+ _sngltriggertable_la_LIBADD = $(top_builddir)/lib/gstlal-burst/libgstlalburst.la
+-_sngltriggertable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) $(PYTHON_LIBS) -module -avoid-version
++_sngltriggertable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) -undefined dynamic_lookup -module -avoid-version
+ all: all-am
+ 
+ .SUFFIXES:
