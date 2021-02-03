@@ -13,9 +13,11 @@ build:
   error_overdepending: true
   error_overlinking: true
   ignore_run_exports:
-    # header is included, but never used, reported upstream
-    - lalburst
-    - lalinspiral
+    # configure needs lalburst, but it isn't actually used
+    - liblalburst
+    # not linked, but needed at runtime
+    - gobject-introspection
+    - gst-python
   number: 0
   skip: true  # [win or py>36]
 
@@ -25,7 +27,6 @@ requirements:
     - make  # [unix]
     - pkg-config >=0.18.0  # [unix]
   host:
-    - libglib
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
@@ -33,11 +34,10 @@ requirements:
     - gstreamer
     - liblal >=6.20.1
     - liblalburst >=1.5.2
-    - liblalinspiral
+    - liblalmetaio
     - numpy
     - python
   run:
-    - glib
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
@@ -46,13 +46,15 @@ requirements:
     - gstlal-ugly >=1.7.0
     - gstreamer
     - h5py
-    - liblal >=6.20.1
+    - liblal
+    - liblalmetaio
     - ligo-scald
     - ligo-segments >=1.2.0
     - lscsoft-glue >=2.0.0
     - {{ pin_compatible('numpy') }}
     - python
     - python-confluent-kafka >=0.11.4
+    - python-lalburst >=1.5.2
     - scipy
 
 test:
@@ -61,7 +63,7 @@ test:
     - gstlal.snax.auxcache
     - gstlal.snax.feature_extractor
     - gstlal.snax.multichannel_datasource
-    - gstlal.snax.multirate_datasource
+    - gstlal.snax.pipeparts
     - gstlal.snax.sngltriggertable
     - gstlal.snax.utils
     - gstlal.snax.waveforms
@@ -72,28 +74,28 @@ test:
   commands:
     - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [not win]
     # check executables
-    - gstlal_cs_triggergen --help
+    #- gstlal_cs_triggergen --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/58
     - gstlal_snax_aggregate --help
-    - gstlal_snax_bank_overlap --help
+    #- gstlal_snax_bank_overlap --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/59
     - gstlal_snax_combine --help
     - gstlal_snax_dag_offline --help
-    - gstlal_snax_dag_online --help
+    #- gstlal_snax_dag_online --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/60
     - gstlal_snax_extract --help
     - gstlal_snax_monitor --help
     - gstlal_snax_sink --help
-    - gstlal_snax_synchronize --help
+    #- gstlal_snax_synchronize --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/61
     - gstlal_snax_whiten --help
     # check pkg-config
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
 
 about:
-  home: "https://lscsoft.docs.ligo.org/gstlal/"
-  dev_url: "https://git.ligo.org/lscsoft/gstlal/"
-  doc_url: "https://lscsoft.docs.ligo.org/gstlal/"
-  license: "GPL-2.0-or-later"
-  license_family: "GPL"
-  license_file: "COPYING"
-  summary: "GStreamer for generic transient data analysis"
+  home: https://lscsoft.docs.ligo.org/gstlal/
+  dev_url: https://git.ligo.org/lscsoft/gstlal/
+  doc_url: https://lscsoft.docs.ligo.org/gstlal/
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: GStreamer for generic transient data analysis
   description: |
     This package contains the plugins and shared libraries required
     to run the gstlal burst (generic transient) pipeline.
