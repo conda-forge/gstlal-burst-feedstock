@@ -32,6 +32,7 @@ requirements:
     - gst-plugins-base
     - gstlal >=1.6.0
     - gstreamer
+    - libglib
     - liblal >=6.20.1
     - liblalburst >=1.5.2
     - liblalmetaio
@@ -46,6 +47,7 @@ requirements:
     - gstlal-ugly >=1.7.0
     - gstreamer
     - h5py
+    - libglib
     - liblal
     - liblalmetaio
     - ligo-scald
