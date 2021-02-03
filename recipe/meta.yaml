@@ -1,13 +1,13 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
-  sha256: e0a623ab0ced29b5f1f2d18678f67f0f0eec937b86172675cc2bca773c746917
+  url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
+  sha256: 53409b0fa11e19c22602b0f0fd09909a783a7cbf60c1d98bf4421f460215f9bd
   patches:
     # https://git.ligo.org/lscsoft/gstlal/issues/46
     - missing-links.patch
@@ -24,7 +24,7 @@ build:
     - lalburst
     - lalinspiral
   number: 0
-  skip: true  # [win or py>=30]
+  skip: true  # [win or py>36]
 
 requirements:
   build:
@@ -32,15 +32,15 @@ requirements:
     - make  # [unix]
     - pkg-config >=0.18.0  # [unix]
   host:
-    - glib
+    - libglib
     - gobject-introspection >=1.30.0
     - gsl
     - gst-plugins-base
     - gstlal >=1.6.0
     - gstreamer
-    - lal >=6.20.1
-    - lalburst >=1.5.2
-    - lalinspiral
+    - liblal >=6.20.1
+    - liblalburst >=1.5.2
+    - liblalinspiral
     - numpy
     - python
   run:
@@ -53,7 +53,7 @@ requirements:
     - gstlal-ugly >=1.7.0
     - gstreamer
     - h5py
-    - lal >=6.20.1
+    - liblal >=6.20.1
     - ligo-scald
     - ligo-segments >=1.2.0
     - lscsoft-glue >=2.0.0
