@@ -9,7 +9,7 @@ pushd _build
 export GSL_LIBS="-L${PREFIX}/lib -lgsl"
 export GSTLAL_LIBS="-L${PREFIX}/lib -lgstlal -lgstlaltags -lgstlaltypes"
 export gstreamer_audio_LIBS="-L${PREFIX}/lib -lgstaudio-1.0"
-export LAL_LIBS="-L${PREFIX}/lib -llal -llalmetaio"
+export LAL_LIBS="-L${PREFIX}/lib -llal"
 
 # replace '/usr/bin/env python3' with '/usr/bin/python'
 # so that conda-build will then replace it with the $PREFIX/bin/python

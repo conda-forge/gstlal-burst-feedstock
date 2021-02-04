@@ -15,8 +15,9 @@ build:
   error_overdepending: true
   error_overlinking: true
   ignore_run_exports:
-    # configure needs lalburst, but it isn't actually used
+    # needed by configure, but not used
     - liblalburst
+    - liblalmetaio
     # not linked, but needed at runtime
     - gobject-introspection
     - gst-python
@@ -51,7 +52,6 @@ requirements:
     - h5py
     - libglib
     - liblal
-    - liblalmetaio
     - ligo-scald
     - ligo-segments >=1.2.0
     - lscsoft-glue >=2.0.0
