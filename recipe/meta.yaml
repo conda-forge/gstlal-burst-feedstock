@@ -1,5 +1,18 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
+
+# dependencies
+{% set gobject_introspection_version = "1.30.0" %}
+{% set gstlal_version = "1.9.0" %}
+{% set gstlal_ugly_version = "1.9.1" %}
+{% set lal_version = "6.20.1" %}
+{% set lalburst_version = "1.5.2" %}
+{% set lalmetaio_version = "1.5.1" %}
+{% set lalsimulation_version = "1.8.0" %}
+{% set ligo_scald_version = "0.7.2" %}
+{% set ligo_segments_version = "1.2.0" %}
+{% set lscsoft_glue_version = "2.0.0" %}
+{% set python_ligo_lw_version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +20,9 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 53409b0fa11e19c22602b0f0fd09909a783a7cbf60c1d98bf4421f460215f9bd
+  sha256: 77b18ac2348ffd0020cdba65cc33775ed3daacf8bf7f7838467c9e0e57c4b160
   patches:
     - no-link-libpython.patch  # [osx]
-    # https://git.ligo.org/lscsoft/gstlal/-/merge_requests/28
-    - setrlimit-linux-only.patch
 
 build:
   error_overdepending: true
@@ -24,7 +35,7 @@ build:
     - gobject-introspection
     - gst-python
   number: 0
-  skip: true  # [win or py>36]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -32,35 +43,35 @@ requirements:
     - make  # [unix]
     - pkg-config >=0.18.0  # [unix]
   host:
-    - gobject-introspection >=1.30.0
+    - gobject-introspection >={{ gobject_introspection_version }}
     - gsl
     - gst-plugins-base
-    - gstlal >=1.6.0
+    - gstlal >={{ gstlal_version }}
     - gstreamer
     - libglib
-    - liblal >=6.20.1
-    - liblalburst >=1.5.2
+    - liblal >={{ lal_version }}
+    - liblalburst >={{ lalburst_version }}
     - liblalmetaio
     - numpy
     - python
   run:
-    - gobject-introspection >=1.30.0
+    - gobject-introspection >={{ gobject_introspection_version }}
     - gsl
     - gst-plugins-base
     - gst-python
-    - gstlal >=1.6.0
-    - gstlal-ugly >=1.7.0
+    - gstlal >={{ gstlal_version }}
+    - gstlal-ugly >={{ gstlal_ugly_version }}
     - gstreamer
     - h5py
     - libglib
-    - liblal
-    - ligo-scald
-    - ligo-segments >=1.2.0
-    - lscsoft-glue >=2.0.0
+    - liblal >={{ lal_version }}
+    - ligo-scald >={{ ligo_scald_version }}
+    - ligo-segments >={{ ligo_segments_version }}
+    - lscsoft-glue >={{ lscsoft_glue_version }}
     - {{ pin_compatible('numpy') }}
     - python
     - python-confluent-kafka >=0.11.4
-    - python-lalburst >=1.5.2
+    - python-lalburst >={{ lalburst_version }}
     - scipy
 
 test:
@@ -80,16 +91,16 @@ test:
   commands:
     - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [not win]
     # check executables
-    #- gstlal_cs_triggergen --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/58
+    - gstlal_cs_triggergen --help
     - gstlal_snax_aggregate --help
-    #- gstlal_snax_bank_overlap --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/59
+    - gstlal_snax_bank_overlap --help
     - gstlal_snax_combine --help
     - gstlal_snax_dag_offline --help
-    #- gstlal_snax_dag_online --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/60
+    - gstlal_snax_dag_online --help
     - gstlal_snax_extract --help
     - gstlal_snax_monitor --help
     - gstlal_snax_sink --help
-    #- gstlal_snax_synchronize --help  <-- https://git.ligo.org/lscsoft/gstlal/-/issues/61
+    - gstlal_snax_synchronize --help
     - gstlal_snax_whiten --help
     # check pkg-config
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
