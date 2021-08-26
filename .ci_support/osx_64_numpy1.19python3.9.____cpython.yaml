@@ -9,7 +9,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 gsl:
-- '2.6'
+- '2.7'
 gst_plugins_base:
 - '1.18'
 gstreamer:
