@@ -34,7 +34,7 @@ build:
     # not linked, but needed at runtime
     - gobject-introspection
     - gst-python
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -65,7 +65,7 @@ requirements:
     - h5py
     - libglib
     - liblal >={{ lal_version }}
-    - ligo-scald >={{ ligo_scald_version }}
+    - ligo-scald >={{ ligo_scald_version }},<0.8.0a0
     - ligo-segments >={{ ligo_segments_version }}
     - lscsoft-glue >={{ lscsoft_glue_version }}
     - {{ pin_compatible('numpy') }}
