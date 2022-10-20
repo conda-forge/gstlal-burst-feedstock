@@ -69,6 +69,7 @@ requirements:
     - ligo-scald >={{ ligo_scald_version }},<0.8.0a0
     - ligo-segments >={{ ligo_segments_version }}
     - lscsoft-glue >={{ lscsoft_glue_version }}
+    - matplotlib-base
     - {{ pin_compatible('numpy') }}
     - python
     - python-confluent-kafka >=0.11.4
