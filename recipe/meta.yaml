@@ -34,7 +34,7 @@ build:
     # not linked, but needed at runtime
     - gobject-introspection
     - gst-python
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
