@@ -1,5 +1,5 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 # dependencies
 {% set gobject_introspection_version = "1.30.0" %}
@@ -20,7 +20,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 77b18ac2348ffd0020cdba65cc33775ed3daacf8bf7f7838467c9e0e57c4b160
+  sha256: f9c68aac21638bb180b3583b90f94505da0b7adeed7eaa6b9377b0129594fd95
   patches:
     - no-link-libpython.patch  # [osx]
 
@@ -35,7 +35,7 @@ build:
     - gobject-introspection
     - gst-python
     - numpy
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
