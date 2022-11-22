@@ -81,7 +81,6 @@ test:
     - gstlal.snax.feature_extractor
     - gstlal.snax.multichannel_datasource
     - gstlal.snax.pipeparts
-    - gstlal.snax.sngltriggertable
     - gstlal.snax.utils
     - gstlal.snax.waveforms
     - gstlal.snglbursttable
