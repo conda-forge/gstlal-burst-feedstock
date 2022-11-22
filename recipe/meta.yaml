@@ -3,16 +3,15 @@
 
 # dependencies
 {% set gobject_introspection_version = "1.30.0" %}
-{% set gstlal_version = "1.9.0" %}
-{% set gstlal_ugly_version = "1.9.1" %}
-{% set lal_version = "6.20.1" %}
-{% set lalburst_version = "1.5.2" %}
-{% set lalmetaio_version = "1.5.1" %}
-{% set lalsimulation_version = "1.8.0" %}
-{% set ligo_scald_version = "0.7.2" %}
+{% set gstlal_version = "1.10.0" %}
+{% set gstlal_ugly_version = "1.10.0" %}
+{% set lal_version = "7.2.4" %}
+{% set lalburst_version = "1.7.0" %}
+{% set lalmetaio_version = "3.0.2" %}
+{% set lalsimulation_version = "4.0.2" %}
+{% set ligo_scald_version = "0.8.1" %}
 {% set ligo_segments_version = "1.2.0" %}
-{% set lscsoft_glue_version = "2.0.0" %}
-{% set python_ligo_lw_version = "1.7.0" %}
+{% set python_ligo_lw_version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -66,9 +65,8 @@ requirements:
     - h5py
     - libglib
     - liblal >={{ lal_version }}
-    - ligo-scald >={{ ligo_scald_version }},<0.8.0a0
+    - ligo-scald >={{ ligo_scald_version }}
     - ligo-segments >={{ ligo_segments_version }}
-    - lscsoft-glue >={{ lscsoft_glue_version }}
     - matplotlib-base <3.6.0a0
     - {{ pin_compatible('numpy') }}
     - python
