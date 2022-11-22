@@ -1,18 +1,17 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 # dependencies
 {% set gobject_introspection_version = "1.30.0" %}
-{% set gstlal_version = "1.9.0" %}
-{% set gstlal_ugly_version = "1.9.1" %}
-{% set lal_version = "6.20.1" %}
-{% set lalburst_version = "1.5.2" %}
-{% set lalmetaio_version = "1.5.1" %}
-{% set lalsimulation_version = "1.8.0" %}
-{% set ligo_scald_version = "0.7.2" %}
+{% set gstlal_version = "1.10.0" %}
+{% set gstlal_ugly_version = "1.10.0" %}
+{% set lal_version = "7.2.4" %}
+{% set lalburst_version = "1.7.0" %}
+{% set lalmetaio_version = "3.0.2" %}
+{% set lalsimulation_version = "4.0.2" %}
+{% set ligo_scald_version = "0.8.1" %}
 {% set ligo_segments_version = "1.2.0" %}
-{% set lscsoft_glue_version = "2.0.0" %}
-{% set python_ligo_lw_version = "1.7.0" %}
+{% set python_ligo_lw_version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -20,7 +19,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 77b18ac2348ffd0020cdba65cc33775ed3daacf8bf7f7838467c9e0e57c4b160
+  sha256: f9c68aac21638bb180b3583b90f94505da0b7adeed7eaa6b9377b0129594fd95
   patches:
     - no-link-libpython.patch  # [osx]
 
@@ -35,7 +34,7 @@ build:
     - gobject-introspection
     - gst-python
     - numpy
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -66,9 +65,8 @@ requirements:
     - h5py
     - libglib
     - liblal >={{ lal_version }}
-    - ligo-scald >={{ ligo_scald_version }},<0.8.0a0
+    - ligo-scald >={{ ligo_scald_version }}
     - ligo-segments >={{ ligo_segments_version }}
-    - lscsoft-glue >={{ lscsoft_glue_version }}
     - matplotlib-base <3.6.0a0
     - {{ pin_compatible('numpy') }}
     - python
@@ -83,7 +81,6 @@ test:
     - gstlal.snax.feature_extractor
     - gstlal.snax.multichannel_datasource
     - gstlal.snax.pipeparts
-    - gstlal.snax.sngltriggertable
     - gstlal.snax.utils
     - gstlal.snax.waveforms
     - gstlal.snglbursttable

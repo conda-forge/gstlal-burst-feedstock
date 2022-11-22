@@ -28,14 +28,4 @@
  all: all-recursive
  
  .SUFFIXES:
---- python/snax/Makefile.in	2021-01-28 20:59:20.000000000 +0000
-+++ python/snax/Makefile.in	2021-02-03 22:36:02.000000000 +0000
-@@ -423,7 +423,7 @@
- _sngltriggertable_la_CPPFLAGS = $(AM_CPPFLAGS) $(PYTHON_CPPFLAGS) -DMODULE_NAME="\"gstlal._sngltriggertable\""
- _sngltriggertable_la_CFLAGS = $(AM_CFLAGS) $(GSTLAL_CFLAGS) $(LAL_CFLAGS) $(GSL_CFLAGS) $(gstreamer_CFLAGS) -fno-strict-aliasing -DMODULE_NAME="\"gstlal._sngltriggertable\""
- _sngltriggertable_la_LIBADD = $(top_builddir)/lib/gstlal-burst/libgstlalburst.la
--_sngltriggertable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) $(PYTHON_LIBS) -module -avoid-version
-+_sngltriggertable_la_LDFLAGS = $(AM_LDFLAGS) $(LAL_LIBS) $(GSL_LIBS) -undefined dynamic_lookup -module -avoid-version
- all: all-am
- 
- .SUFFIXES:
+
