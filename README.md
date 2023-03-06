@@ -1,11 +1,11 @@
-About gstlal-burst
-==================
+About gstlal-burst-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gstlal-burst-feedstock/blob/main/LICENSE.txt)
 
 Home: https://lscsoft.docs.ligo.org/gstlal/
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gstlal-burst-feedstock/blob/main/LICENSE.txt)
 
 Summary: GStreamer for generic transient data analysis
 
