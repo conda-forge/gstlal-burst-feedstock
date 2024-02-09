@@ -65,24 +65,15 @@ requirements:
     - h5py
     - libglib
     - liblal >={{ lal_version }}
-    - ligo-scald >={{ ligo_scald_version }}
     - ligo-segments >={{ ligo_segments_version }}
-    - matplotlib-base <3.6.0a0
+    - matplotlib-base
     - {{ pin_compatible('numpy') }}
     - python
-    - python-confluent-kafka >=0.11.4
     - python-lalburst >={{ lalburst_version }}
     - scipy
 
 test:
   imports:
-    - gstlal.snax
-    - gstlal.snax.auxcache
-    - gstlal.snax.feature_extractor
-    - gstlal.snax.multichannel_datasource
-    - gstlal.snax.pipeparts
-    - gstlal.snax.utils
-    - gstlal.snax.waveforms
     - gstlal.snglbursttable
     - gstlal.streamburca
   requires:
@@ -91,16 +82,6 @@ test:
     - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [not win]
     # check executables
     - gstlal_cs_triggergen --help
-    - gstlal_snax_aggregate --help
-    - gstlal_snax_bank_overlap --help
-    - gstlal_snax_combine --help
-    - gstlal_snax_dag_offline --help
-    - gstlal_snax_dag_online --help
-    - gstlal_snax_extract --help
-    - gstlal_snax_monitor --help
-    - gstlal_snax_sink --help
-    - gstlal_snax_synchronize --help
-    - gstlal_snax_whiten --help
     # check pkg-config
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
 
