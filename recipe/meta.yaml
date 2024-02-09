@@ -56,16 +56,10 @@ requirements:
     - python
   run:
     - gobject-introspection >={{ gobject_introspection_version }}
-    - gsl
-    - gst-plugins-base
     - gst-python
     - gstlal >={{ gstlal_version }}
     - gstlal-inspiral
     - gstlal-ugly >={{ gstlal_ugly_version }}
-    - gstreamer
-    - h5py
-    - libglib
-    - liblal >={{ lal_version }}
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
