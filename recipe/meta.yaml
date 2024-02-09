@@ -1,5 +1,5 @@
 {% set name = "gstlal-burst" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 # dependencies
 {% set gobject_introspection_version = "1.30.0" %}
@@ -19,7 +19,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
-  sha256: f9c68aac21638bb180b3583b90f94505da0b7adeed7eaa6b9377b0129594fd95
+  sha256: a62deaf8f30651b68429c28327bf7e72bb76b462b7810d580c57c96d0b94e453
   patches:
     - no-link-libpython.patch  # [osx]
 
@@ -34,7 +34,7 @@ build:
     - gobject-introspection
     - gst-python
     - numpy
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -56,51 +56,36 @@ requirements:
     - python
   run:
     - gobject-introspection >={{ gobject_introspection_version }}
-    - gsl
-    - gst-plugins-base
     - gst-python
     - gstlal >={{ gstlal_version }}
+    - gstlal-inspiral
     - gstlal-ugly >={{ gstlal_ugly_version }}
-    - gstreamer
-    - h5py
-    - libglib
-    - liblal >={{ lal_version }}
-    - ligo-scald >={{ ligo_scald_version }}
     - ligo-segments >={{ ligo_segments_version }}
-    - matplotlib-base <3.6.0a0
+    - matplotlib-base
     - {{ pin_compatible('numpy') }}
     - python
-    - python-confluent-kafka >=0.11.4
     - python-lalburst >={{ lalburst_version }}
     - scipy
 
 test:
-  imports:
-    - gstlal.snax
-    - gstlal.snax.auxcache
-    - gstlal.snax.feature_extractor
-    - gstlal.snax.multichannel_datasource
-    - gstlal.snax.pipeparts
-    - gstlal.snax.utils
-    - gstlal.snax.waveforms
-    - gstlal.snglbursttable
-    - gstlal.streamburca
   requires:
     - pkg-config  # [unix]
+  imports:
+    - gstlal.snglbursttable
+    - gstlal.streamburca
   commands:
-    - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [not win]
+    - export GSTLAL_FIR_WHITEN=0  # [unix]
+    - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [unix]
     # check executables
+    - gstlal_cherenkov_burst --help
+    - gstlal_cherenkov_calc_likelihood --help
+    - gstlal_cherenkov_calc_rank_pdfs --help
+    - gstlal_cherenkov_inj --help
+    - gstlal_cherenkov_plot_rankingstat --help
+    - gstlal_cherenkov_plot_summary --help
+    - gstlal_cherenkov_zl_rank_pdfs --help
     - gstlal_cs_triggergen --help
-    - gstlal_snax_aggregate --help
-    - gstlal_snax_bank_overlap --help
-    - gstlal_snax_combine --help
-    - gstlal_snax_dag_offline --help
-    - gstlal_snax_dag_online --help
-    - gstlal_snax_extract --help
-    - gstlal_snax_monitor --help
-    - gstlal_snax_sink --help
-    - gstlal_snax_synchronize --help
-    - gstlal_snax_whiten --help
+    - gstlal_impulse_inj --help
     # check pkg-config
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
 
