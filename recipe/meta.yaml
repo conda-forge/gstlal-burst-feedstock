@@ -60,6 +60,7 @@ requirements:
     - gst-plugins-base
     - gst-python
     - gstlal >={{ gstlal_version }}
+    - gstlal-inspiral
     - gstlal-ugly >={{ gstlal_ugly_version }}
     - gstreamer
     - h5py
@@ -73,15 +74,24 @@ requirements:
     - scipy
 
 test:
+  requires:
+    - pkg-config  # [unix]
   imports:
     - gstlal.snglbursttable
     - gstlal.streamburca
-  requires:
-    - pkg-config  # [unix]
   commands:
-    - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [not win]
+    - export GSTLAL_FIR_WHITEN=0  # [unix]
+    - export TMPDIR=$(python -c "import tempfile; print(tempfile.gettempdir())")  # [unix]
     # check executables
+    - gstlal_cherenkov_burst --help
+    - gstlal_cherenkov_calc_likelihood --help
+    - gstlal_cherenkov_calc_rank_pdfs --help
+    - gstlal_cherenkov_inj --help
+    - gstlal_cherenkov_plot_rankingstat --help
+    - gstlal_cherenkov_plot_summary --help
+    - gstlal_cherenkov_zl_rank_pdfs --help
     - gstlal_cs_triggergen --help
+    - gstlal_impulse_inj --help
     # check pkg-config
     - pkg-config --print-errors --libs gstlal-burst  # [unix]
 
