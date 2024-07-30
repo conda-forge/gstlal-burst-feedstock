@@ -22,6 +22,8 @@ source:
   sha256: a62deaf8f30651b68429c28327bf7e72bb76b462b7810d580c57c96d0b94e453
   patches:
     - py-compile-imp.patch
+    # backport https://git.ligo.org/lscsoft/gstlal/-/merge_requests/611
+    - pyobject_head_init.patch
     - no-link-libpython.patch  # [osx]
 
 build:

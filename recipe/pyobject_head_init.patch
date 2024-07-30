@@ -1,0 +1,25 @@
+From 40a09ccff3da7b24d73418e08bc5841a801c0860 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <macleoddm@cardiff.ac.uk>
+Date: Tue, 30 Jul 2024 10:32:01 +0100
+Subject: [PATCH] gstlal-burst: fix compilation on macOS with Python 3.12
+
+---
+ gstlal-burst/python/snglbursttable.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gstlal-burst/python/snglbursttable.c b/gstlal-burst/python/snglbursttable.c
+index a610eeb31..983615b51 100644
+--- a/gstlal-burst/python/snglbursttable.c
++++ b/gstlal-burst/python/snglbursttable.c
+@@ -280,7 +280,7 @@ static PyObject *richcompare(PyObject *self, PyObject *other, int op_id)
+ 
+ 
+ static PyTypeObject gstlal_GSTLALSnglBurst_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(gstlal_GSTLALSnglBurst),
+ 	.tp_doc = "GstLAL's GSTLALSnglBurst type",
+ 	.tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+-- 
+2.39.2
+
