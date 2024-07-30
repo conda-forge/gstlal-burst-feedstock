@@ -25,7 +25,6 @@ source:
     - no-link-libpython.patch  # [osx]
 
 build:
-  error_overdepending: true
   error_overlinking: true
   ignore_run_exports:
     # needed by configure, but not used
@@ -34,7 +33,6 @@ build:
     # not linked, but needed at runtime
     - gobject-introspection
     - gst-python
-    - numpy
   number: 1
   skip: true  # [win]
 
@@ -53,7 +51,6 @@ requirements:
     - liblal >={{ lal_version }}
     - liblalburst >={{ lalburst_version }}
     - liblalmetaio
-    - numpy
     - python
   run:
     - gobject-introspection >={{ gobject_introspection_version }}
@@ -63,7 +60,7 @@ requirements:
     - gstlal-ugly >={{ gstlal_ugly_version }}
     - ligo-segments >={{ ligo_segments_version }}
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - python
     - python-lalburst >={{ lalburst_version }}
     - scipy
