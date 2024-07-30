@@ -39,6 +39,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - make  # [unix]
     - pkg-config >=0.18.0  # [unix]
   host:
