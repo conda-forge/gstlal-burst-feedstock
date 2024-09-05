@@ -36,7 +36,8 @@ build:
     - gobject-introspection
     - gst-python
   number: 2
-  skip: true  # [win]
+  # gstlal-inspiral is not available for Python 3.9
+  skip: true  # [win or py<310]
 
 requirements:
   build:
